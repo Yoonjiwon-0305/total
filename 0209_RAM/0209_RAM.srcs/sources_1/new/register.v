@@ -1,0 +1,27 @@
+`timescale 1ns / 1ps
+
+
+
+module register (
+
+    input         clk,
+    input         reset,
+    input  [31:0] d,
+    output [31:0] q
+
+);
+
+    // F/F 이므로 always
+
+    reg [31:0] q_reg;
+
+    assign q = q_reg;
+    always @(posedge clk, posedge reset) begin
+        if (reset) begin
+            q_reg <= 32'd0;
+        end else begin
+            q_reg <= d;
+        end
+    end
+
+endmodule
